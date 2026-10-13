@@ -1,22 +1,29 @@
 const taskListArray = [];
 let userInput = document.getElementById('task-input');
-let taskList = document.getElementById('task-list');
+let taskList = document.getElementById('task-view');
+let taskOne = document.getElementById('taskOne');
 
 
 // Taking user input 
 userInput.addEventListener('keypress', function(event){
     if(event.key === "Enter" && userInput.value != "" ){
 
-        // creating h3 element in DOC
-       let currentTasks = document.createElement("p")
+        // creating checkbox and the area were the tasks should appear
+       let currentTasks = document.createElement("input")
        let checkMark = document.createElement('input');
+       let space = document.createElement('br');
 
        checkMark.type = 'checkbox';
+       currentTasks.id = 'task-list'
 
-       currentTasks.innerHTML = userInput.value;
-       // appending the h3 to the DOC
+       currentTasks.value = userInput.value;
+       // appending elements to the DOM
+       taskList.appendChild(space);
        taskList.appendChild(currentTasks);
        taskList.appendChild(checkMark);
+
+
+       // storing element inside array
        taskListArray.push(currentTasks);
 
        // deleting the text on the input area
@@ -26,7 +33,6 @@ userInput.addEventListener('keypress', function(event){
        
     } 
 })
-// TODO : add check mark for complete tasks by changing h3 to checkbox
 
 function CheckArrayElement(arrayLength){
     for(let i = 0; i < arrayLength; i++ ){
